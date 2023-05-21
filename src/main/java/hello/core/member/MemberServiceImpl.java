@@ -1,5 +1,10 @@
 package hello.core.member;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl  implements  MemberService{
     // MemberServiceImpl은 MemberRepository와 MemoryMemberRepository 둘 다 의존하고 있다.
     // 즉, 추상화에도 의존하고 , 구체화에도 의존한다. DIP 위반
@@ -14,8 +19,10 @@ public class MemberServiceImpl  implements  MemberService{
     //MemberServiceImpl 입장에서 생성자를 통해 어떤 구현 객체가 들어올지(주입될지)는 알 수 없다.
     //MemberServiceImpl의 생성자를 통해서 어떤 구현 객체를 주입할지는 오직 외부 AppConfig에서 결정된다.
     //MemberServiceImpl은 이제부터 "의존관계에 대한 고민은 외부"에 맡기고 "실행에만 집중"하면 된다.
+
     private final MemberRepository memberRepository;
 
+    @Autowired // 의존관계 주입
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
@@ -28,5 +35,11 @@ public class MemberServiceImpl  implements  MemberService{
     @Override
     public Member findMember(Long memberId) {
         return memberRepository.findById(memberId);
+    }
+
+
+    //테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }

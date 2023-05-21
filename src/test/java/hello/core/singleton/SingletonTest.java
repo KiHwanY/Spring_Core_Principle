@@ -5,6 +5,8 @@ import hello.core.member.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -47,6 +49,33 @@ public class SingletonTest {
         //SameAs ==
         //NotSameAs !=
         //Equal equal
+    }
+
+    @Test
+    @DisplayName("스프링 컨테이너와 싱글톤")
+    void springContainer(){
+      //  AppConfig appConfig = new AppConfig();
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+
+        //1. 조회 : 호출할 때 마다 객체를 생성
+        MemberService memberService1 = ac.getBean("memberService" , MemberService.class);
+        MemberService memberService2 = ac.getBean("memberService" , MemberService.class);
+
+
+        //참조값이 다른 것을 확인
+        System.out.println("memberService1 = " + memberService1);
+        System.out.println("memberService2 = " + memberService2);
+
+        //memberService1 != memberService2
+        assertThat(memberService1).isSameAs(memberService2);
+
+        // 스프링 컨테이너 덕분에 고객의 요청이 올 때 마다 객체를 생성하는 것이 아니라, 이미 만들어진 객체를 공유해서 효율적으로 재사용
+        // 사용할 수 있다.
+    }
+
+
+
 
         // 싱글돈 패턴을 구현하는 방법은 여러가지가 있다. 여기서는 객체를 미리 생성해두는 가장
         // 단순하고 안전한 방법을 선택했다.
@@ -70,5 +99,5 @@ public class SingletonTest {
 
 
 
-    }
+
 }

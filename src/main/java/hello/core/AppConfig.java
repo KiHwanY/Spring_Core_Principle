@@ -41,18 +41,36 @@ public class AppConfig {
     // 중복 코드 , 리팩터링 new MemoryMemberRepository() ,  new FixDiscountPolicy()
     // 역할이 한눈에도 볼 수 있게 처리해줘야 한다.
 
+    //@Bean memberSerivce =  new MemoryMemberRepository()
+    //@Bean orderService =  new MemoryMemberRepository()
+
+    //call AppConfig.memberService
+    //call AppConfig.memberRepository
+    //call AppConfig.memberRepository
+    //call AppConfig.orderService
+    //call AppConfig.memberRepository
+
+
+    // run을 시켜보니 3번 호출 됨.
+    //call AppConfig.memberService
+    //call AppConfig.memberRepository
+    //call AppConfig.orderService
     @Bean
     public MemberService memberService(){
         // MemberService를 요청하면 Impl 리턴 시 MemoryMemberRepository 생성해서 보냄
+
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
 
     }
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService(){
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(),  discountPolicy());
     }
     @Bean
@@ -61,7 +79,4 @@ public class AppConfig {
         return new RateDiscountPolicy();
 
     }
-
-
-
 }
