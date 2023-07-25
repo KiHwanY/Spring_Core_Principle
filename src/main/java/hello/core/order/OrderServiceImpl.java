@@ -40,7 +40,8 @@ public class OrderServiceImpl implements OrderService{
     @Autowired // Autowired 매칭 정리
     // 타입 매칭
     // 타입 매칭의 결과가 2개 이상일 때 필드 명, 파라미터 명으로 빈 이름 매칭
-    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    //@Qualifier("mainDiscountPolicy")
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
