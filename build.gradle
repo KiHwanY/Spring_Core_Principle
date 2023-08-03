@@ -21,6 +21,9 @@ configurations {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'com.mysql:mysql-connector-j:8.0.32'
+	implementation 'mysql:mysql-connector-mxj:5.0.12'
+	implementation 'com.oracle.database.r2dbc:oracle-r2dbc:1.0.0'
 	//lombok 라이브러리 추가 시작
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
