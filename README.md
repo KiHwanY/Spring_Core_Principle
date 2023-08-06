@@ -3,7 +3,7 @@
 
 ## :page_facing_up: Contests
 
-김영한님의[스프링 핵심 원리'](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8%ED%8E%B8) 강의를 통해 스프링의 핵심 원리를 이해하고, 스프링 기본기를 확실히 다질 수 있는 공부를 했다.
+김영한님의[스프링 핵심 원리](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8%ED%8E%B8) 강의를 통해 스프링의 핵심 원리를 이해하고, 스프링 기본기를 확실히 다질 수 있는 공부를 했다.
 
 ![core](https://github.com/TrakkerTeam/trakker/assets/117561565/1c4e2537-a876-498d-855d-61bbb0020fa2)
 
